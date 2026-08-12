@@ -1,0 +1,84 @@
+{
+    "site": {
+        "name": "Muslim Social",
+        "title": "Follow Us Everywhere",
+        "description": "Find useful pages, channels and communities in one place.",
+        "logo": "",
+        "year": 2026
+    },
+    "sections": [
+        {
+            "id": "facebook",
+            "platform": "facebook",
+            "title": "Follow us on Facebook",
+            "description": "Follow these Facebook pages for useful content, updates and reminders.",
+            "icon": "facebook",
+            "color": "#1877F2",
+            "items": [
+                {
+                    "id": "facebook-001",
+                    "title": "Facebook Page",
+                    "username": "",
+                    "url": "https://www.facebook.com/profile.php?id=100093433902540",
+                    "image": "",
+                    "description": "Visit this Facebook page and follow it to stay updated with new content.",
+                    "button": "Follow Page",
+                    "type": "page"
+                },
+                {
+                    "title": "فريق فطرة",
+                    "url": "https://www.facebook.com/Fitrah2017",
+                    "image": "https://scontent.faly8-1.fna.fbcdn.net/v/t39.30808-6/326299336_702086574659518_7127911380736471000_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x2048&ctp=s2048x2048&_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Wlk81W2r_iEQ7kNvwES7BYH&_nc_oc=AdpWLFpNbJFBFA_1QQwNVqAaGWk__R3WSyzv-D9TBnMwDPfnhQ7UkqXeNpOM2AhNMCw&_nc_zt=23&_nc_ht=scontent.faly8-1.fna&_nc_gid=s1ypQMnmU-owh2k1HfjaUQ&_nc_ss=7b2a8&oh=00_AQGid5KA7MtNvMcCFCQTpmbo222Adgvam4ecGJWTIpKaXA&oe=6A818383",
+                    "description": "فريق شبابي يهدف إلى تصحيح ما فسد من فطرة الإنسان وإصلاح ما أصابها من تشوهات تصورية وسلوكية .. بالفطرة حياتك أحلى"
+                }
+            ]
+        },
+        {
+            "id": "tiktok",
+            "platform": "tiktok",
+            "title": "Follow us on TikTok",
+            "description": "Short videos, quick tips and useful content.",
+            "icon": "tiktok",
+            "color": "#000000",
+            "items": []
+        },
+        {
+            "id": "youtube",
+            "platform": "youtube",
+            "title": "Subscribe on YouTube",
+            "description": "Watch videos, tutorials, guides and the latest content.",
+            "icon": "youtube",
+            "color": "#FF0000",
+            "items": []
+        },
+        {
+            "id": "telegram",
+            "platform": "telegram",
+            "title": "Join us on Telegram",
+            "description": "Get useful updates and content directly on Telegram.",
+            "icon": "telegram",
+            "color": "#229ED9",
+            "items": [
+                {
+                    "id": "telegram-001",
+                    "title": "Muslim Social",
+                    "username": "@muslimSocial",
+                    "url": "https://t.me/muslimSocial/68",
+                    "image": "",
+                    "description": "Useful content and links shared through Muslim Social.",
+                    "button": "Open Telegram",
+                    "type": "post"
+                }
+            ]
+        },
+        {
+            "id": "whatsapp",
+            "platform": "whatsapp",
+            "title": "Stay connected on WhatsApp",
+            "description": "Join our WhatsApp channels and receive useful updates.",
+            "icon": "whatsapp",
+            "color": "#25D366",
+            "items": []
+        }
+    ]
+}

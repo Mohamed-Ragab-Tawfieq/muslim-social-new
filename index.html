@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Muslim Social</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-950 text-white">
+
+  <!-- Header -->
+  <header class="px-6 py-16 text-center">
+    <h1 id="site-title" class="text-4xl font-black sm:text-6xl">
+      Loading...
+    </h1>
+
+    <p id="site-description"
+       class="mx-auto mt-5 max-w-2xl text-slate-400">
+    </p>
+  </header>
+
+
+  <!-- Sections will be generated here -->
+  <main id="social-sections"
+        class="mx-auto max-w-6xl px-6 pb-20">
+  </main>
+
+
+  <script>
+
+    async function loadSocialData() {
+
+      // Get JSON file
+      const response = await fetch("data.json");
+
+      // Convert response to JavaScript object
+      const data = await response.json();
+
+
+      // -------------------------
+      // Site information
+      // -------------------------
+
+      document.title = data.site.title;
+
+      document.getElementById("site-title").textContent =
+        data.site.title;
+
+      document.getElementById("site-description").textContent =
+        data.site.description;
+
+
+      // -------------------------
+      // Generate sections
+      // -------------------------
+
+      const container =
+        document.getElementById("social-sections");
+
+      data.sections.forEach(section => {
+
+        // Don't show empty sections
+        if (section.items.length === 0) {
+          return;
+        }
+
+
+        // Create section
+        const sectionElement =
+          document.createElement("section");
+
+        sectionElement.id = section.id;
+
+        sectionElement.className =
+          "scroll-mt-8 border-t border-white/10 py-16";
+
+
+        // Section HTML
+        sectionElement.innerHTML = `
+
+          <div class="mb-8">
+
+            <div class="mb-3 flex items-center gap-3">
+
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-2xl text-xl font-black"
+                style="background-color: ${section.color}"
+              >
+                ${getIcon(section.platform)}
+              </div>
+
+              <span
+                class="text-sm font-semibold uppercase tracking-widest"
+                style="color: ${section.color}"
+              >
+                ${section.platform}
+              </span>
+
+            </div>
+
+            <h2 class="text-3xl font-black sm:text-4xl">
+              ${section.title}
+            </h2>
+
+            <p class="mt-3 max-w-2xl text-slate-400">
+              ${section.description}
+            </p>
+
+          </div>
+
+
+          <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+            ${section.items
+              .map(item => createCard(item, section))
+              .join("")}
+
+          </div>
+
+        `;
+
+
+        container.appendChild(sectionElement);
+
+      });
+
+    }
+
+
+    // -------------------------
+    // Create social card
+    // -------------------------
+
+    function createCard(item, section) {
+
+      const image = item.image
+        ? `
+          <img
+            src="${item.image}"
+            alt="${item.title}"
+            class="h-14 w-14 rounded-2xl object-cover"
+          >
+        `
+        : `
+          <div
+            class="flex h-14 w-14 items-center justify-center rounded-2xl text-xl font-black"
+            style="background-color: ${section.color}"
+          >
+            ${getIcon(section.platform)}
+          </div>
+        `;
+
+
+      return `
+
+        <a
+          href="${item.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group rounded-3xl border border-white/10
+                 bg-white/[0.04] p-6
+                 transition duration-300
+                 hover:-translate-y-1
+                 hover:bg-white/[0.08]"
+        >
+
+          <div class="flex items-center justify-between">
+
+            <div class="flex items-center gap-4">
+
+              ${image}
+
+              <div>
+
+                <h3 class="font-bold">
+                  ${item.title}
+                </h3>
+
+                ${
+                  item.username
+                    ? `
+                      <p class="mt-1 text-sm text-slate-500">
+                        ${item.username}
+                      </p>
+                    `
+                    : ""
+                }
+
+              </div>
+
+            </div>
+
+
+            <span
+              class="text-xl text-slate-500
+                     transition
+                     group-hover:translate-x-1
+                     group-hover:text-white"
+            >
+              →
+            </span>
+
+          </div>
+
+
+          <p class="mt-5 text-sm leading-6 text-slate-400">
+            ${item.description}
+          </p>
+
+
+          <div
+            class="mt-6 inline-flex rounded-xl px-5 py-3
+                   text-sm font-bold text-white"
+            style="background-color: ${section.color}"
+          >
+            ${item.button}
+          </div>
+
+        </a>
+
+      `;
+    }
+
+
+    // -------------------------
+    // Platform icons
+    // -------------------------
+
+    function getIcon(platform) {
+
+      const icons = {
+        facebook: "f",
+        tiktok: "♪",
+        youtube: "▶",
+        telegram: "✈",
+        whatsapp: "☎"
+      };
+
+      return icons[platform] || "→";
+    }
+
+
+    // Start
+    loadSocialData();
+
+  </script>
+
+</body>
+</html>
